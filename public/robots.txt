@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bilalahmed.dev/sitemap.xml
+Sitemap: https://bilalahmed35.vercel.app/sitemap.xml
