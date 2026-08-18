@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { styles } from "../styles";
@@ -23,7 +24,9 @@ const Tech = () => {
       </motion.div>
 
       <p className="mt-3 text-secondary text-base max-w-3xl leading-relaxed mb-8">
-        Proven experience building production applications using modern web stacks, REST APIs, database systems, and AI APIs. Filter by domain to view specific technical capabilities.
+        Proven experience building production applications using modern web
+        stacks, REST APIs, database systems, and AI APIs. Filter by domain to
+        view specific technical capabilities.
       </p>
 
       {/* Category Tabs (Default Selected: All) */}
@@ -62,7 +65,9 @@ const Tech = () => {
                 <div className="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 rounded-full bg-[#915eff]" />
-                    <h3 className="text-xl font-bold text-white">{catGroup.category}</h3>
+                    <h3 className="text-xl font-bold text-white">
+                      {catGroup.category}
+                    </h3>
                   </div>
                   <span className="text-xs font-mono text-[#915eff] bg-[#915eff]/10 px-2.5 py-1 rounded-full border border-[#915eff]/30">
                     {catGroup.skills.length} skills

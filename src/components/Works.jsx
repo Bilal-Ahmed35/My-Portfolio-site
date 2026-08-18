@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { styles } from "../styles";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
@@ -19,7 +21,7 @@ const FeaturedProjectCard = ({ project, index }) => {
       {/* Screenshot / Preview */}
       <div className="lg:w-1/2 relative overflow-hidden bg-black-100 min-h-[260px] sm:min-h-[320px]">
         <img
-          src={project.image}
+          src={typeof project.image === "string" ? project.image : project.image?.src || project.image}
           alt={project.name}
           loading="lazy"
           className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
@@ -84,7 +86,7 @@ const FeaturedProjectCard = ({ project, index }) => {
         <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
           {project.case_study_link && (
             <Link
-              to={project.case_study_link}
+              href={project.case_study_link}
               className="px-4 py-2.5 rounded-xl bg-[#915eff] hover:bg-[#7b4fe0] text-white text-xs font-bold transition shadow-md shadow-[#915eff]/30"
             >
               Case Study Page 📖
@@ -131,7 +133,7 @@ const StandardProjectCard = ({ project, index }) => {
       <div>
         <div className="relative w-full h-[180px] rounded-xl overflow-hidden mb-4 bg-black-100">
           <img
-            src={project.image}
+            src={typeof project.image === "string" ? project.image : project.image?.src || project.image}
             alt={project.name}
             loading="lazy"
             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
@@ -169,7 +171,7 @@ const StandardProjectCard = ({ project, index }) => {
       <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-white/10">
         {project.case_study_link && (
           <Link
-            to={project.case_study_link}
+            href={project.case_study_link}
             className="px-3 py-1.5 rounded-lg bg-[#915eff] text-white text-xs font-semibold hover:bg-[#7b4fe0] transition"
           >
             Case Study

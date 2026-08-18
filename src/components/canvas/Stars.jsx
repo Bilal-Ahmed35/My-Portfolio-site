@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { useRef, useState, Suspense } from "react";
 import { PointMaterial, Preload, Points } from "@react-three/drei";

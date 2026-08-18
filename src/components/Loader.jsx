@@ -1,4 +1,5 @@
 // src/Loader.jsx
+"use client";
 
 import React from "react";
 import { Html, useProgress } from "@react-three/drei";

@@ -1,10 +1,11 @@
+"use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 import emailjs from "@emailjs/browser";
-import BilalCV from "../assets/CV/BilalAhmed_CV.pdf";
+const BilalCV = "/CV/BilalAhmed_CV.pdf";
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -35,9 +36,9 @@ const Contact = () => {
     setStatus({ type: "", message: "" });
 
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
       if (serviceId && templateId && publicKey) {
         await emailjs.send(
@@ -48,7 +49,7 @@ const Contact = () => {
             from_email: form.email,
             message: form.message,
           },
-          publicKey
+          publicKey,
         );
       } else {
         await new Promise((res) => setTimeout(res, 800));
@@ -56,14 +57,16 @@ const Contact = () => {
 
       setStatus({
         type: "success",
-        message: "✅ Thank you! Your message has been sent successfully. I will get back to you shortly.",
+        message:
+          "✅ Thank you! Your message has been sent successfully. I will get back to you shortly.",
       });
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("Email error:", error);
       setStatus({
         type: "error",
-        message: "❌ Unable to send message right now. Please email directly at bilalahmedshah35@gmail.com.",
+        message:
+          "❌ Unable to send message right now. Please email directly at bilalahmedshah35@gmail.com.",
       });
     } finally {
       setLoading(false);
@@ -83,7 +86,9 @@ const Contact = () => {
             Let's build something together.
           </h2>
           <p className="text-secondary text-base leading-relaxed mb-8">
-            I'm currently open to full-time Full-Stack Developer and Software Engineer opportunities. Whether you have a position open, a project to discuss, or just want to connect — reach out anytime!
+            I'm currently open to full-time Full-Stack Developer and Software
+            Engineer opportunities. Whether you have a position open, a project
+            to discuss, or just want to connect — reach out anytime!
           </p>
 
           <div className="space-y-4">
@@ -98,7 +103,9 @@ const Contact = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-secondary font-medium">Direct Email</p>
+                <p className="text-xs uppercase tracking-wider text-secondary font-medium">
+                  Direct Email
+                </p>
                 <p className="text-sm font-semibold text-white group-hover:text-[#915eff] transition">
                   bilalahmedshah35@gmail.com
                 </p>
@@ -118,7 +125,9 @@ const Contact = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-secondary font-medium">LinkedIn Profile</p>
+                <p className="text-xs uppercase tracking-wider text-secondary font-medium">
+                  LinkedIn Profile
+                </p>
                 <p className="text-sm font-semibold text-white group-hover:text-[#915eff] transition">
                   linkedin.com/in/bilalshah34
                 </p>
@@ -138,7 +147,9 @@ const Contact = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-secondary font-medium">GitHub Repositories</p>
+                <p className="text-xs uppercase tracking-wider text-secondary font-medium">
+                  GitHub Repositories
+                </p>
                 <p className="text-sm font-semibold text-white group-hover:text-[#915eff] transition">
                   github.com/Bilal-Ahmed35
                 </p>
@@ -157,7 +168,9 @@ const Contact = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-white font-medium">Curriculum Vitae</p>
+                <p className="text-xs uppercase tracking-wider text-white font-medium">
+                  Curriculum Vitae
+                </p>
                 <p className="text-sm font-bold text-white flex items-center gap-1">
                   <span>Download Resume PDF</span>
                   <span>↗</span>

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { OrbitControls, Preload, useGLTF, Float } from "@react-three/drei";
 import { Suspense, useEffect, useState } from "react";

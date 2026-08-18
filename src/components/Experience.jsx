@@ -1,3 +1,5 @@
+"use client";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { textVariant } from "../utils/motion";
@@ -17,13 +19,13 @@ const ExperienceCard = ({ experience }) => (
     iconStyle={{ background: experience.iconBg }}
     icon={
       <div className="w-full h-full flex items-center justify-center">
-        <img
+        <Image
           src={experience.icon}
           alt={experience.company_name}
+          width={60}
+          height={60}
           loading="lazy"
-          width="60%"
-          height="60%"
-          className="w-[60%] h-[60%] object-contain"
+          className="w-[60%] h-auto object-contain"
         />
       </div>
     }

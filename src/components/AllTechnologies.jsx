@@ -1,15 +1,16 @@
 
+"use client";
+
 import React from "react";
 import { BallCanvas } from "./canvas";
 import { technologies } from "../constants";
 import { styles } from "../styles";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const AllTechnologies = () => {
-
-   const navigate = useNavigate();
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-primary px-4 sm:px-10 py-20">
       <motion.div className="w-full text-center mb-12">
@@ -28,8 +29,8 @@ const AllTechnologies = () => {
 
       <div className="mt-16 text-center">
         <div
-          onClick={() => navigate("/#skills")}
-          className="inline-block mt-4 px-6 py-2 bg-[#915eff] text-white rounded-xl shadow-lg hover:bg-[#7d48f5] transition"
+          onClick={() => router.push("/#skills")}
+          className="inline-block mt-4 px-6 py-2 bg-[#915eff] text-white rounded-xl shadow-lg hover:bg-[#7d48f5] transition cursor-pointer"
         >
           Back to Home
         </div>

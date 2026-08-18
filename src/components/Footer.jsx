@@ -1,5 +1,6 @@
 import React from "react";
-import BilalCV from "../assets/CV/BilalAhmed_CV.pdf";
+
+const BilalCV = "/CV/BilalAhmed_CV.pdf";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

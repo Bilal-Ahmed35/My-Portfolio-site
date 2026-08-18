@@ -1,9 +1,13 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import Image from "next/image";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
-import BilalCV from "../assets/CV/BilalAhmed_CV.pdf";
+
+const BilalCV = "/CV/BilalAhmed_CV.pdf";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -36,17 +40,18 @@ const Navbar = () => {
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
-          to="/"
+          href="/"
           className="flex items-center gap-2 group"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
         >
-          <img
+          <Image
             src={logo}
             alt="Bilal Ahmed Logo"
-            loading="lazy"
+            width={48}
+            height={48}
             className="w-12 h-12 object-contain group-hover:scale-105 transition-transform"
           />
           <div className="w-[1.5px] h-7 bg-white/30"></div>
@@ -67,7 +72,9 @@ const Navbar = () => {
               <li
                 key={link.id}
                 className={`${
-                  active === link.title ? "text-white font-semibold" : "text-gray-400"
+                  active === link.title
+                    ? "text-white font-semibold"
+                    : "text-gray-400"
                 } hover:text-white text-[15px] font-medium transition-colors cursor-pointer`}
                 onClick={() => setActive(link.title)}
               >
