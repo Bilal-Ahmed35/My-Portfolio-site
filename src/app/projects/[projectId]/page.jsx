@@ -9,6 +9,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { projectId } = await params;
+
   const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
@@ -17,20 +18,37 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const imageUrl = typeof project.image === "string" ? project.image : project.image?.src || "";
+  const imageUrl =
+    typeof project.image === "string"
+      ? project.image
+      : project.image?.src || "";
 
   return {
     title: `${project.name} | Bilal Ahmed Case Study`,
     description: project.description,
+
+    alternates: {
+      canonical: `/projects/${projectId}`,
+    },
+
     openGraph: {
-      title: project.name,
+      type: "article",
+      title: `${project.name} | Bilal Ahmed Case Study`,
       description: project.description,
+      url: `https://bilalahmed35.vercel.app/projects/${projectId}`,
       images: [
         {
           url: imageUrl,
           alt: project.name,
         },
       ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} | Bilal Ahmed Case Study`,
+      description: project.description,
+      images: [imageUrl],
     },
   };
 }

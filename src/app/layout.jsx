@@ -8,7 +8,10 @@ export const metadata = {
   keywords:
     "Bilal Ahmed, Full-Stack Developer, Software Engineer, React Developer, Next.js Developer, Node.js Developer, MERN Stack, Web Application Developer, Pakistan",
   authors: [{ name: "Bilal Ahmed" }],
-  robots: "index, follow",
+  robots: {
+    index: true,
+    follow: true,
+  },
   metadataBase: new URL("https://bilalahmed35.vercel.app"),
   alternates: {
     canonical: "/",
